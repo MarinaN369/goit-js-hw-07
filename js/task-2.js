@@ -29,10 +29,16 @@ const images = [
 ];
 
 
-const gallery = document.querySelector(".gallery")
+const gallery = document.querySelector('.gallery');
 
-const galleryList = images.map((image) => <li class="list-item"> <img src="${image.url}" alt="${image.alt}" width="360" /></li>).join("");
+const createGalleryItem = ({ url, alt }) => { const img = document.createElement('img'); img.src = url; img.alt = alt;
 
-console.log(galleryList);
+const li = document.createElement('li'); li.appendChild(img);
 
-gallery.insertAdjacentHTML("beforeend", galleryList)
+return li; };
+
+const addGalleryItems = (arr) => { const fragment = document.createDocumentFragment(); arr.forEach(item => { const galleryItem = createGalleryItem(item); fragment.appendChild(galleryItem); });
+
+gallery.append(fragment); };
+
+addGalleryItems(images);
