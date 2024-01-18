@@ -9,8 +9,8 @@ const createBtn = document.querySelector("[data-create]");
 const boxes = document.querySelector("#boxes");
 
 createBtn.addEventListener('click', () => {
-  const amount = document.querySelector('input').value;
-  createBoxes(amount);
+  const total = document.querySelector('input').value;
+  createBoxes(total);
 })
 
 
@@ -18,11 +18,11 @@ function createBoxes(total) {
   boxes.innerHTML = "";
   if (total >= 1 && total <=100)
 {  let markup = [];
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < total; i++) {
     const boxWidth = 30 + 10 * i;
     const boxHeight = 30 + 10 * i;
     const boxColor = getRandomHexColor();
-    markup.push(<div style="background-color: ${boxColor}; width:${boxWidth}px; height:${boxHeight}px" class="box"></div>\n);
+    markup.push(<div style="background-color: ${boxColor}; width:${boxWidth}px; height:${boxHeight}px" class="box"></div> \n);
   }
   markup = markup.join('\n\n');
 
