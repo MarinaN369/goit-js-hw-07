@@ -9,7 +9,7 @@ const createBtn = document.querySelector("[data-create]");
 const boxes = document.querySelector("#boxes");
 
 createBtn.addEventListener('click', () => {
-  const total = document.querySelector('input').value;
+  const total = input.value;
   createBoxes(total);
 })
 
@@ -17,18 +17,17 @@ createBtn.addEventListener('click', () => {
 function createBoxes(total) {
   boxes.innerHTML = "";
   if (total >= 1 && total <=100)
-{  let markup = [];
+{  let boxElements = [];
   for (let i = 0; i < total; i++) {
     const boxWidth = 30 + 10 * i;
     const boxHeight = 30 + 10 * i;
     const boxColor = getRandomHexColor();
-    markup.push(<div style="background-color: ${boxColor}; width:${boxWidth}px; height:${boxHeight}px" class="box"></div> \n);
+    boxElements.push(`<div style="background-color: ${boxColor}; width:${boxWidth}px; height:${boxHeight}px" class="box"></div>`);
   }
-  markup = markup.join('\n\n');
-
   
-  boxes.innerHTML = markup;
-  document.querySelector('input').value = "";
+  
+    boxes.innerHTML = boxElements.join(" ");
+  input.value = "";
   }
 }
 
